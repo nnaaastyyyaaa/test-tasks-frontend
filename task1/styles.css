@@ -1,0 +1,62 @@
+.flag {
+  max-width: 300px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.ukraine {
+  background: linear-gradient(
+    to bottom,
+    hsl(58, 100%, 49%) 50% 50%,
+    hsl(230, 100%, 50%) 50% 100%
+  );
+}
+
+.japan {
+  background: radial-gradient(circle at center, #ff0000 35% 35%, #fff 35% 100%);
+  border: 1px solid black;
+}
+
+.iceland {
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 45%,
+      #f80000 45%,
+      #f80000 55%,
+      transparent 55%
+    ),
+    linear-gradient(
+      to right,
+      transparent 32%,
+      #f80000 32%,
+      #f80000 38%,
+      transparent 38% 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 40%,
+      #fff 40%,
+      #fff 60%,
+      transparent 60%
+    ),
+    linear-gradient(
+      to right,
+      transparent 28%,
+      #fff 28%,
+      #fff 42%,
+      transparent 42% 100%
+    ),
+    #2409bc;
+}
+
+.czech-republic {
+  background: conic-gradient(
+    from 0deg at center,
+    #fff 0deg 90deg,
+    #f80000 90deg 244deg,
+    #2409bc 244deg 296deg,
+    #fff 296deg 360deg
+  );
+  border: 1px solid black;
+}
