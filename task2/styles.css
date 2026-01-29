@@ -24,3 +24,19 @@
   border: 5px solid yellow;
   transform: rotate(45deg);
 }
+
+@media (max-width: 900px) {
+  .photo {
+    width: 100%;
+    height: auto;
+    flex-basis: calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 500px) {
+  .photo {
+    width: 100%;
+    height: auto;
+    flex-basis: 100%;
+  }
+}
