@@ -13,9 +13,10 @@
 .container .photo:nth-child(4n + 1) img {
   border: 5px solid red;
 }
+
 .photo img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border: 5px solid rgb(92, 92, 92);
   border-radius: 50%;
 }
@@ -39,4 +40,25 @@
     height: auto;
     flex-basis: 100%;
   }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(92, 92, 92, 0.8);
+}
+
+.parent {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 1%;
+  left: 98%;
+  color: white;
+  cursor: pointer;
 }
