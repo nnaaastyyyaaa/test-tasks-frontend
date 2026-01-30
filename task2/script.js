@@ -3,6 +3,7 @@ const body = document.querySelector("body");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".close");
 const deleteButton = document.querySelectorAll(".delete-image");
+const restoreBtn = document.querySelector(".restore-all");
 
 const header = document.createElement("h1");
 
@@ -22,6 +23,16 @@ const updateHeader = () => {
 };
 updateHeader();
 body.insertAdjacentElement("afterbegin", header);
+
+const getDeletedImgs = () => {
+  return JSON.parse(localStorage.getItem("deletedImgs") || "[]");
+};
+
+const saveDeletedImg = (src) => {
+  let deletedImgs = getDeletedImgs();
+  deletedImgs.push(src);
+  localStorage.setItem("deletedImgs", JSON.stringify(deletedImgs));
+};
 
 images.forEach((image) => {
   image.addEventListener("click", () => {
@@ -45,7 +56,25 @@ deleteButton.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.stopPropagation();
     const photo = button.closest(".photo");
+    const src = photo.getElementsByTagName("img")[0].src;
+    saveDeletedImg(src);
     photo.remove();
     updateHeader();
   });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const deletedImgs = getDeletedImgs();
+  images.forEach((img) => {
+    const srcImage = img.getElementsByTagName("img")[0].src;
+    if (deletedImgs.includes(srcImage)) {
+      img.remove();
+    }
+  });
+  updateHeader();
+});
+
+restoreBtn.addEventListener("click", () => {
+  localStorage.removeItem("deletedImgs");
+  location.reload();
 });
