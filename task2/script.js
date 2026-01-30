@@ -2,21 +2,26 @@ const images = document.querySelectorAll(".photo");
 const body = document.querySelector("body");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".close");
+const deleteButton = document.querySelectorAll(".delete-image");
 
-const options = {
-  year: "numeric",
-  month: "numeric",
-  day: "numeric",
-  hour: "numeric",
-  minute: "numeric",
+const header = document.createElement("h1");
+
+const updateHeader = () => {
+  const images = document.querySelectorAll(".photo");
+  const options = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  };
+
+  const now = new Date().toLocaleString("uk-UA", options);
+
+  header.textContent = `Number of images: ${images.length}, Date: ${now}`;
 };
-
-const now = new Date().toLocaleString("uk-UA", options);
-
-body.insertAdjacentHTML(
-  "beforebegin",
-  `<h1>Number of images: ${images.length}, Date: ${now}</h1>`,
-);
+updateHeader();
+body.insertAdjacentElement("afterbegin", header);
 
 images.forEach((image) => {
   image.addEventListener("click", () => {
@@ -34,4 +39,13 @@ closeBtn.addEventListener("click", () => {
 body.addEventListener("click", (e) => {
   if (e.target === modal && modal.style.display === "flex")
     modal.style.display = "none";
+});
+
+deleteButton.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const photo = button.closest(".photo");
+    photo.remove();
+    updateHeader();
+  });
 });

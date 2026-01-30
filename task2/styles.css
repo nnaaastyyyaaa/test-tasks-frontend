@@ -8,8 +8,16 @@
 
 .photo {
   flex-basis: calc((100% - 60px) / 4);
+  position: relative;
 }
 
+.delete-image {
+  color: black;
+  position: absolute;
+  top: 99%;
+  left: 98%;
+  cursor: pointer;
+}
 .container .photo:nth-child(4n + 1) img {
   border: 5px solid red;
 }
